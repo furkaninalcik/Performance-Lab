@@ -113,19 +113,10 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
 
     int i,j,k, deneme1, block_size, total;
 
-    block_size = 25;
+    block_size = 15;
 
     int en = block_size * (dim/block_size); /* Amount that fits evenly into blocks */
 
-
-
-    for (int i = 0; i < dim; ++i)
-    {
-        for (int j = 0; j < dim; ++j)
-        {
-            dst[i*dim+j] = 0;
-        }
-    }
 
     for (int k0 = 0; k0 < en; k0 += block_size)
     {
@@ -133,6 +124,8 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
         {
             for(i = 0; i < dim; i++){
                 for(j = j0; j < j0 + block_size; j0++) {
+
+                    dst[i*dim+j] = 0;
                     
                     total = dst[i*dim+j];
                     printf("Dim: %d\n", dim );
