@@ -7,7 +7,7 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
 
     int i,j,k, deneme1, block_size, total;
 
-    block_size = 2;
+    block_size = 1;
 
     int en = block_size * (dim/block_size); /* Amount that fits evenly into blocks */
 
@@ -132,11 +132,21 @@ void naive_matrix_multiplication(int dim,int *src, int *src2,int *dst) {
 int main(int argc, char const *argv[])
 {
     
-    int dst[9] = {7,7,7,7,7,7,7,7,7};
-    int src1[9] = {3,7,1,0,8,2,6,2,9};
-    int src2[9] = {4,0,1,2,6,8,9,1,3};
-    int dim = 3;
-    //naive_matrix_multiplication(dim,src1,src2,dst);
+    //int dst[9] = {7,7,7,7,7,7,7,7,7};
+    int dst[9] = {3,3,3,3,3,3,3,3,3};
+    //int src1[9] = {3,7,1,0,8,2,6,2,9};
+    //int src2[9] = {4,0,1,2,6,8,9,1,3};
+    
+    //int src1[25] = {6,3,1,0,2,1,1,3,7,8,6,2,9,1,3,2,7,4,0,1,8,8,0,2,5};
+    //int src2[25] = {3,3,1,2,0,4,6,3,2,1,1,5,2,6,0,8,3,7,4,7,9,1,6,0,3};
+
+    int src1[16] = {6,3,1,0,1,1,3,7,6,2,9,1,2,7,4,0};
+    int src2[16] = {3,3,1,2,4,6,3,2,1,5,2,6,8,3,7,4};
+
+
+
+    int dim = 4;
+    naive_matrix_multiplication(dim,src1,src2,dst);
 
     matrix_multiplication(dim,src1,src2,dst);
 

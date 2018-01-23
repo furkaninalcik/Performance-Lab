@@ -94,26 +94,12 @@ char naive_matrix_multiplication_descr[] = "Naive_matrix_multiplication: Naive b
 void naive_matrix_multiplication(int dim,int *src, int *src2,int *dst) {
     int i,j,k;
 
-    //FILE *fp;
-    //fp = fopen("mult_result.txt", "w+");
-
-    for(i = 0; i < dim; i++){
+    for(i = 0; i < dim; i++)
         for(j = 0; j < dim; j++) {
             dst[j*dim+i]=0;
-            for(k = 0; k < dim; k++){
+            for(k = 0; k < dim; k++) 
                 dst[j*dim+i] = dst[j*dim+i] + src[j*dim+k]*src2[i+k*dim];
-            }
-            //fprintf(fp , "%d | ", dst[i*dim+j] );
-
-        }
-        
-        //fprintf(fp , "\n");
-
-    }
-
-    //fclose(fp);
-
-
+        }    
 }
 
 
@@ -125,16 +111,10 @@ char matrix_multiplication_descr[] = "Matrix multiplications: Current working ve
 void matrix_multiplication(int dim,int *src, int *src2,int *dst) 
 {
 
-    int i,j,k, deneme1, block_size, total;
+    int i,j,k, total;
+    //int deneme1;
 
-    block_size = 15;
-
-    int en = block_size * (dim/block_size); /* Amount that fits evenly into blocks */
-
-    FILE *fp;
-    fp = fopen("test_output.txt", "w+");
-
-
+/*
     for (int i = 0; i < dim; ++i)
     {
         for (int j = 0; j < dim; ++j)
@@ -143,46 +123,135 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
         }
     }
 
-    for (int k0 = 0; k0 < en; k0 += block_size)
-    {
-        for (int j0 = 0; j0 < en; j0 += block_size)
-        {
-            for(i = 0; i < dim; i++){
-                for(j = j0; j < j0 + block_size; j++) {
+    */
 
-                    dst[i*dim+j] = 0;
-                    
-                    total = dst[i*dim+j];
-                    for(k = k0; k < k0 + block_size; k++){ 
-                        total += src[i*dim+k]*src2[k*dim+j];
-                    }
+    for(i = 0; i < dim; i++)
+        for(j = 0; j < dim; j++) {
+            
+            dst[i*dim+j] = 0;
+            
+            //int loop_count = dim / 32;
 
-                    //printf("j = %d, j0 = %d \n", j,j0);
-                    
-                    //fprintf(fp , "j = %d, j0 = %d \n", j,j0);
+            total = dst[i*dim+j];
 
-                    fprintf(fp , "%d | ", total );
-                 
-
-                   
-                   //fprintf(fp, "This is testing for fprintf...\n");
-                   //fputs("This is testing for fputs...\n", fp);
-                   
-
-                    dst[i*dim+j] = total;
-
-                    if (k == dim-1)
-                    {
-                        fprintf(fp , "\n");
-                    }
-                    //fprintf(fp,"Dim: %d, Total: %d\n", dim, total);
-
-                }      
+            if (dim == 32)
+            {
+                total += src[i*dim+k]*src2[k*dim+j];
+                total += src[i*dim+(k+1)]*src2[(k+1)*dim+j];
+                total += src[i*dim+(k+2)]*src2[(k+2)*dim+j];
+                total += src[i*dim+(k+3)]*src2[(k+3)*dim+j];
+                total += src[i*dim+(k+4)]*src2[(k+4)*dim+j];
+                total += src[i*dim+(k+5)]*src2[(k+5)*dim+j];
+                total += src[i*dim+(k+6)]*src2[(k+6)*dim+j];
+                total += src[i*dim+(k+7)]*src2[(k+7)*dim+j];
+                total += src[i*dim+(k+8)]*src2[(k+8)*dim+j];
+                total += src[i*dim+(k+9)]*src2[(k+9)*dim+j];
+                total += src[i*dim+(k+10)]*src2[(k+10)*dim+j];
+                total += src[i*dim+(k+11)]*src2[(k+11)*dim+j];
+                total += src[i*dim+(k+12)]*src2[(k+12)*dim+j];
+                total += src[i*dim+(k+13)]*src2[(k+13)*dim+j];
+                total += src[i*dim+(k+14)]*src2[(k+14)*dim+j];
+                total += src[i*dim+(k+15)]*src2[(k+15)*dim+j];
+                total += src[i*dim+(k+16)]*src2[(k+16)*dim+j];
+                total += src[i*dim+(k+17)]*src2[(k+17)*dim+j];
+                total += src[i*dim+(k+18)]*src2[(k+18)*dim+j];
+                total += src[i*dim+(k+19)]*src2[(k+19)*dim+j];
+                total += src[i*dim+(k+20)]*src2[(k+20)*dim+j];
+                total += src[i*dim+(k+21)]*src2[(k+21)*dim+j];
+                total += src[i*dim+(k+22)]*src2[(k+22)*dim+j];
+                total += src[i*dim+(k+23)]*src2[(k+23)*dim+j];
+                total += src[i*dim+(k+24)]*src2[(k+24)*dim+j];
+                total += src[i*dim+(k+25)]*src2[(k+25)*dim+j];
+                total += src[i*dim+(k+26)]*src2[(k+26)*dim+j];
+                total += src[i*dim+(k+27)]*src2[(k+27)*dim+j];
+                total += src[i*dim+(k+28)]*src2[(k+28)*dim+j];
+                total += src[i*dim+(k+29)]*src2[(k+29)*dim+j];
+                total += src[i*dim+(k+30)]*src2[(k+30)*dim+j];
+                total += src[i*dim+(k+31)]*src2[(k+31)*dim+j];
             }
-        }
-    }
-    fclose(fp);
 
+            else if (dim == 64)
+            {
+                total += src[i*dim+k]*src2[k*dim+j];
+                total += src[i*dim+(k+1)]*src2[(k+1)*dim+j];
+                total += src[i*dim+(k+2)]*src2[(k+2)*dim+j];
+                total += src[i*dim+(k+3)]*src2[(k+3)*dim+j];
+                total += src[i*dim+(k+4)]*src2[(k+4)*dim+j];
+                total += src[i*dim+(k+5)]*src2[(k+5)*dim+j];
+                total += src[i*dim+(k+6)]*src2[(k+6)*dim+j];
+                total += src[i*dim+(k+7)]*src2[(k+7)*dim+j];
+                total += src[i*dim+(k+8)]*src2[(k+8)*dim+j];
+                total += src[i*dim+(k+9)]*src2[(k+9)*dim+j];
+                total += src[i*dim+(k+10)]*src2[(k+10)*dim+j];
+                total += src[i*dim+(k+11)]*src2[(k+11)*dim+j];
+                total += src[i*dim+(k+12)]*src2[(k+12)*dim+j];
+                total += src[i*dim+(k+13)]*src2[(k+13)*dim+j];
+                total += src[i*dim+(k+14)]*src2[(k+14)*dim+j];
+                total += src[i*dim+(k+15)]*src2[(k+15)*dim+j];
+                total += src[i*dim+(k+16)]*src2[(k+16)*dim+j];
+                total += src[i*dim+(k+17)]*src2[(k+17)*dim+j];
+                total += src[i*dim+(k+18)]*src2[(k+18)*dim+j];
+                total += src[i*dim+(k+19)]*src2[(k+19)*dim+j];
+                total += src[i*dim+(k+20)]*src2[(k+20)*dim+j];
+                total += src[i*dim+(k+21)]*src2[(k+21)*dim+j];
+                total += src[i*dim+(k+22)]*src2[(k+22)*dim+j];
+                total += src[i*dim+(k+23)]*src2[(k+23)*dim+j];
+                total += src[i*dim+(k+24)]*src2[(k+24)*dim+j];
+                total += src[i*dim+(k+25)]*src2[(k+25)*dim+j];
+                total += src[i*dim+(k+26)]*src2[(k+26)*dim+j];
+                total += src[i*dim+(k+27)]*src2[(k+27)*dim+j];
+                total += src[i*dim+(k+28)]*src2[(k+28)*dim+j];
+                total += src[i*dim+(k+29)]*src2[(k+29)*dim+j];
+                total += src[i*dim+(k+30)]*src2[(k+30)*dim+j];
+                total += src[i*dim+(k+31)]*src2[(k+31)*dim+j];
+                total += src[i*dim+(k+31)]*src2[(k+31)*dim+j];
+                total += src[i*dim+(k+1)]*src2[(k+1)*dim+j];
+                total += src[i*dim+(k+2)]*src2[(k+2)*dim+j];
+                total += src[i*dim+(k+3)]*src2[(k+3)*dim+j];
+                total += src[i*dim+(k+4)]*src2[(k+4)*dim+j];
+                total += src[i*dim+(k+5)]*src2[(k+5)*dim+j];
+                total += src[i*dim+(k+6)]*src2[(k+6)*dim+j];
+                total += src[i*dim+(k+7)]*src2[(k+7)*dim+j];
+                total += src[i*dim+(k+8)]*src2[(k+8)*dim+j];
+                total += src[i*dim+(k+9)]*src2[(k+9)*dim+j];
+                total += src[i*dim+(k+10)]*src2[(k+10)*dim+j];
+                total += src[i*dim+(k+11)]*src2[(k+11)*dim+j];
+                total += src[i*dim+(k+12)]*src2[(k+12)*dim+j];
+                total += src[i*dim+(k+13)]*src2[(k+13)*dim+j];
+                total += src[i*dim+(k+14)]*src2[(k+14)*dim+j];
+                total += src[i*dim+(k+15)]*src2[(k+15)*dim+j];
+                total += src[i*dim+(k+16)]*src2[(k+16)*dim+j];
+                total += src[i*dim+(k+17)]*src2[(k+17)*dim+j];
+                total += src[i*dim+(k+18)]*src2[(k+18)*dim+j];
+                total += src[i*dim+(k+19)]*src2[(k+19)*dim+j];
+                total += src[i*dim+(k+20)]*src2[(k+20)*dim+j];
+                total += src[i*dim+(k+21)]*src2[(k+21)*dim+j];
+                total += src[i*dim+(k+22)]*src2[(k+22)*dim+j];
+                total += src[i*dim+(k+23)]*src2[(k+23)*dim+j];
+                total += src[i*dim+(k+24)]*src2[(k+24)*dim+j];
+                total += src[i*dim+(k+25)]*src2[(k+25)*dim+j];
+                total += src[i*dim+(k+26)]*src2[(k+26)*dim+j];
+                total += src[i*dim+(k+27)]*src2[(k+27)*dim+j];
+                total += src[i*dim+(k+28)]*src2[(k+28)*dim+j];
+                total += src[i*dim+(k+29)]*src2[(k+29)*dim+j];
+                total += src[i*dim+(k+30)]*src2[(k+30)*dim+j];
+                total += src[i*dim+(k+31)]*src2[(k+31)*dim+j];
+            }
+
+
+            
+            dst[i*dim+j] = total;
+            /*
+            for(k = 0; k < dim; k++){
+                total += src[i*dim+k]*src2[k*dim+j];
+            }
+
+            dst[i*dim+j] = total;
+            */
+
+
+
+        }    
             
 
 
