@@ -151,7 +151,22 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
     }
 
     */
-    transp(src2,dim);
+    //transp(src2,dim);
+
+    for (int i = 0; i < dim; ++i)
+    {
+        int i0 = i*dim;
+        for (int j = i+1; j < dim; ++j)
+        {
+            //swap(&(array[i0+j]), &(array[j*dim+i]));
+            //int* a = &(array[i0+j]);
+            //int* b = &(array[j*dim+i]);
+            int c = (src2[i0+j]);
+            src2[i0+j]=src2[j*dim+i]; 
+            src2[j*dim+i]=c;
+        }
+    }
+
     for(i = 0; i < dim; i++){
         for(j = 0; j < dim; j++) {
            
@@ -202,7 +217,7 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
 
 
             
-            dst[i*dim+j] = total;
+            dst[i0+j] = total;
             /*
             for(k = 0; k < dim; k++){
                 total += src[i*dim+k]*src2[k*dim+j];
@@ -216,7 +231,21 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
         }
     }
 
-    transp(src2,dim);    
+    //transp(src2,dim);
+
+    for (int i = 0; i < dim; ++i)
+    {
+        int i0 = i*dim;
+        for (int j = i+1; j < dim; ++j)
+        {
+            //swap(&(array[i0+j]), &(array[j*dim+i]));
+            //int* a = &(array[i0+j]);
+            //int* b = &(array[j*dim+i]);
+            int c = (src2[i0+j]);
+            src2[i0+j]=src2[j*dim+i]; 
+            src2[j*dim+i]=c;
+        }
+    }   
            
 
         //naive_matrix_multiplication(dim,src,src2,dst);
