@@ -51,16 +51,62 @@ void naive_conv(int dim,int *src, int *ker,int *dst) {
  * IMPORTANT: This is the version you will be graded on
  */
 char convolution_descr[] = "Dot product: Current working version";
-void convolution(int dim,int *src, int *ker,int *dst) 
+
+void convolution(int dim,int *src, int *ker,int *dst)
 {
 
-        naive_conv(dim,src,ker,dst);
+    //naive_conv(dim,src,ker,dst);
 
+    int i,j,k,l,j0,total;
 
+    for(i = 0; i < dim-8+1; i++){
+        for(j = 0; j < dim-8+1; j++) {
+            
+	    j0 = j*dim;
+            //dst[j0+i] = 0;
+            
+            total = 0;
+            //k => 0-7
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+0)]*ker[l*dim+0];
+            }
 
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+1)]*ker[l*dim+1];
+            }
 
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+2)]*ker[l*dim+2];
+            }
+
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+3)]*ker[l*dim+3];
+            }
+
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+4)]*ker[l*dim+4];
+            }
+
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+5)]*ker[l*dim+5];
+            }
+
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+6)]*ker[l*dim+6];
+            }
+
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+7)]*ker[l*dim+7];
+            }
+
+	    dst[j0+i] = total;
+
+        }
+    }
 
 }
+
+
 
 /*********************************************************************
  * register_conv_functions - Register all of your different versions
