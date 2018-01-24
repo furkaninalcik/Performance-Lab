@@ -92,89 +92,81 @@ void convolution(int dim,int *src, int *ker,int *dst)
             int x6 = x5+dim;
             int x7 = x6+dim;
 
+
+
+
+
             
             total += src[x0]*ker[y0];
-            total += src[x0+1]*ker[y0+1];
-            total += src[x0+2]*ker[y0+2];
-            total += src[x0+3]*ker[y0+3];
-            total += src[x0+4]*ker[y0+4];
-            total += src[x0+5]*ker[y0+5];
-            total += src[x0+6]*ker[y0+6];
-            total += src[x0+7]*ker[y0+7];
-
-
             total += src[x1]*ker[y1];
-            total += src[x1+1]*ker[y1+1];
-            total += src[x1+2]*ker[y1+2];
-            total += src[x1+3]*ker[y1+3];
-            total += src[x1+4]*ker[y1+4];
-            total += src[x1+5]*ker[y1+5];
-            total += src[x1+6]*ker[y1+6];
-            total += src[x1+7]*ker[y1+7];
-
-
-
             total += src[x2]*ker[y2];
-            total += src[x2+1]*ker[y2+1];
-            total += src[x2+2]*ker[y2+2];
-            total += src[x2+3]*ker[y2+3];
-            total += src[x2+4]*ker[y2+4];
-            total += src[x2+5]*ker[y2+5];
-            total += src[x2+6]*ker[y2+6];
-            total += src[x2+7]*ker[y2+7];
-
-
             total += src[x3]*ker[y3];
-            total += src[x3+1]*ker[y3+1];
-            total += src[x3+2]*ker[y3+2];
-            total += src[x3+3]*ker[y3+3];
-            total += src[x3+4]*ker[y3+4];
-            total += src[x3+5]*ker[y3+5];
-            total += src[x3+6]*ker[y3+6];
-            total += src[x3+7]*ker[y3+7];
-
-
             total += src[x4]*ker[y4];
-            total += src[x4+1]*ker[y4+1];
-            total += src[x4+2]*ker[y4+2];
-            total += src[x4+3]*ker[y4+3];
-            total += src[x4+4]*ker[y4+4];
-            total += src[x4+5]*ker[y4+5];
-            total += src[x4+6]*ker[y4+6];
-            total += src[x4+7]*ker[y4+7];
-            
-
             total += src[x5]*ker[y5];
-            total += src[x5+1]*ker[y5+1];
-            total += src[x5+2]*ker[y5+2];
-            total += src[x5+3]*ker[y5+3];
-            total += src[x5+4]*ker[y5+4];
-            total += src[x5+5]*ker[y5+5];
-            total += src[x5+6]*ker[y5+6];
-            total += src[x5+7]*ker[y5+7];
-            
-
             total += src[x6]*ker[y6];
-            total += src[x6+1]*ker[y6+1];
-            total += src[x6+2]*ker[y6+2];
-            total += src[x6+3]*ker[y6+3];
-            total += src[x6+4]*ker[y6+4];
-            total += src[x6+5]*ker[y6+5];
-            total += src[x6+6]*ker[y6+6];
-            total += src[x6+7]*ker[y6+7];
-            
-
             total += src[x7]*ker[y7];
+
+            total += src[x1+1]*ker[y1+1];
+            total += src[x2+1]*ker[y2+1];
+            total += src[x3+1]*ker[y3+1];
+            total += src[x4+1]*ker[y4+1];
+            total += src[x5+1]*ker[y5+1];
+            total += src[x6+1]*ker[y6+1];
             total += src[x7+1]*ker[y7+1];
+
+            total += src[x0+2]*ker[y0+2];
+            total += src[x1+2]*ker[y1+2];
+            total += src[x2+2]*ker[y2+2];
+            total += src[x3+2]*ker[y3+2];
+            total += src[x4+2]*ker[y4+2];
+            total += src[x5+2]*ker[y5+2];
+            total += src[x6+2]*ker[y6+2];
             total += src[x7+2]*ker[y7+2];
+
+            total += src[x0+3]*ker[y0+3];
+            total += src[x1+3]*ker[y1+3];
+            total += src[x2+3]*ker[y2+3];
+            total += src[x3+3]*ker[y3+3];
+            total += src[x4+3]*ker[y4+3];
+            total += src[x5+3]*ker[y5+3];
+            total += src[x6+3]*ker[y6+3];
             total += src[x7+3]*ker[y7+3];
+
+            total += src[x0+4]*ker[y0+4];
+            total += src[x1+4]*ker[y1+4];
+            total += src[x2+4]*ker[y2+4];
+            total += src[x3+4]*ker[y3+4];
+            total += src[x4+4]*ker[y4+4];
+            total += src[x5+4]*ker[y5+4];
+            total += src[x6+4]*ker[y6+4];
             total += src[x7+4]*ker[y7+4];
+
+            total += src[x0+5]*ker[y0+5];
+            total += src[x1+5]*ker[y1+5];
+            total += src[x2+5]*ker[y2+5];
+            total += src[x3+5]*ker[y3+5];
+            total += src[x4+5]*ker[y4+5];
+            total += src[x5+5]*ker[y5+5];
+            total += src[x6+5]*ker[y6+5];
             total += src[x7+5]*ker[y7+5];
+
+            total += src[x0+6]*ker[y0+6];
+            total += src[x1+6]*ker[y1+6];
+            total += src[x2+6]*ker[y2+6];
+            total += src[x3+6]*ker[y3+6];
+            total += src[x4+6]*ker[y4+6];
+            total += src[x5+6]*ker[y5+6];
+            total += src[x6+6]*ker[y6+6];
             total += src[x7+6]*ker[y7+6];
+
+            total += src[x0+7]*ker[y0+7];
+            total += src[x1+7]*ker[y1+7];
+            total += src[x2+7]*ker[y2+7];
+            total += src[x3+7]*ker[y3+7];
+            total += src[x4+7]*ker[y4+7];
+            total += src[x5+7]*ker[y5+7];
+            total += src[x6+7]*ker[y6+7];
             total += src[x7+7]*ker[y7+7];
-
-
-
 /*
             total += src[(j+0)*dim+(i+1)]*ker[0*dim+1];
             total += src[(j+1)*dim+(i+1)]*ker[1*dim+1];
