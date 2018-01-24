@@ -61,95 +61,51 @@ void convolution(int dim,int *src, int *ker,int *dst)
 
     for(i = 0; i < dim-8+1; i++){
         for(j = 0; j < dim-8+1; j++) {
-
-            j0 = j*dim;
+            
+	    j0 = j*dim;
             //dst[j0+i] = 0;
-
+            
             total = 0;
             //k => 0-7
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+0)]*ker[l*dim+0];
+            }
 
-            //// dst[j*dim+i] = dst[j*dim+i] +src[(j+l)*dim+(i+k)]*ker[l*dim+k]; //////
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+1)]*ker[l*dim+1];
+            }
 
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+2)]*ker[l*dim+2];
+            }
 
-            total += src[(j+0)*dim+(i+0)]*ker[0*dim+0];
-            total += src[(j+1)*dim+(i+0)]*ker[1*dim+0];
-            total += src[(j+2)*dim+(i+0)]*ker[2*dim+0];
-            total += src[(j+3)*dim+(i+0)]*ker[3*dim+0];
-            total += src[(j+4)*dim+(i+0)]*ker[4*dim+0];
-            total += src[(j+5)*dim+(i+0)]*ker[5*dim+0];
-            total += src[(j+6)*dim+(i+0)]*ker[6*dim+0];
-            total += src[(j+7)*dim+(i+0)]*ker[7*dim+0];
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+3)]*ker[l*dim+3];
+            }
 
-            total += src[(j+0)*dim+(i+1)]*ker[0*dim+1];
-            total += src[(j+1)*dim+(i+1)]*ker[1*dim+1];
-            total += src[(j+2)*dim+(i+1)]*ker[2*dim+1];
-            total += src[(j+3)*dim+(i+1)]*ker[3*dim+1];
-            total += src[(j+4)*dim+(i+1)]*ker[4*dim+1];
-            total += src[(j+5)*dim+(i+1)]*ker[5*dim+1];
-            total += src[(j+6)*dim+(i+1)]*ker[6*dim+1];
-            total += src[(j+7)*dim+(i+1)]*ker[7*dim+1];
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+4)]*ker[l*dim+4];
+            }
 
-            total += src[(j+0)*dim+(i+2)]*ker[0*dim+2];
-            total += src[(j+1)*dim+(i+2)]*ker[1*dim+2];
-            total += src[(j+2)*dim+(i+2)]*ker[2*dim+2];
-            total += src[(j+3)*dim+(i+2)]*ker[3*dim+2];
-            total += src[(j+4)*dim+(i+2)]*ker[4*dim+2];
-            total += src[(j+5)*dim+(i+2)]*ker[5*dim+2];
-            total += src[(j+6)*dim+(i+2)]*ker[6*dim+2];
-            total += src[(j+7)*dim+(i+2)]*ker[7*dim+2];
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+5)]*ker[l*dim+5];
+            }
 
-            total += src[(j+0)*dim+(i+3)]*ker[0*dim+3];
-            total += src[(j+1)*dim+(i+3)]*ker[1*dim+3];
-            total += src[(j+2)*dim+(i+3)]*ker[2*dim+3];
-            total += src[(j+3)*dim+(i+3)]*ker[3*dim+3];
-            total += src[(j+4)*dim+(i+3)]*ker[4*dim+3];
-            total += src[(j+5)*dim+(i+3)]*ker[5*dim+3];
-            total += src[(j+6)*dim+(i+3)]*ker[6*dim+3];
-            total += src[(j+7)*dim+(i+3)]*ker[7*dim+3];
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+6)]*ker[l*dim+6];
+            }
 
-            total += src[(j+0)*dim+(i+4)]*ker[0*dim+4];
-            total += src[(j+1)*dim+(i+4)]*ker[1*dim+4];
-            total += src[(j+2)*dim+(i+4)]*ker[2*dim+4];
-            total += src[(j+3)*dim+(i+4)]*ker[3*dim+4];
-            total += src[(j+4)*dim+(i+4)]*ker[4*dim+4];
-            total += src[(j+5)*dim+(i+4)]*ker[5*dim+4];
-            total += src[(j+6)*dim+(i+4)]*ker[6*dim+4];
-            total += src[(j+7)*dim+(i+4)]*ker[7*dim+4];
+            for(l = 0; l < 8; l++) {
+                    total += src[(j+l)*dim+(i+7)]*ker[l*dim+7];
+            }
 
-            total += src[(j+0)*dim+(i+5)]*ker[0*dim+5];
-            total += src[(j+1)*dim+(i+5)]*ker[1*dim+5];
-            total += src[(j+2)*dim+(i+5)]*ker[2*dim+5];
-            total += src[(j+3)*dim+(i+5)]*ker[3*dim+5];
-            total += src[(j+4)*dim+(i+5)]*ker[4*dim+5];
-            total += src[(j+5)*dim+(i+5)]*ker[5*dim+5];
-            total += src[(j+6)*dim+(i+5)]*ker[6*dim+5];
-            total += src[(j+7)*dim+(i+5)]*ker[7*dim+5];
-
-            total += src[(j+0)*dim+(i+6)]*ker[0*dim+6];
-            total += src[(j+1)*dim+(i+6)]*ker[1*dim+6];
-            total += src[(j+2)*dim+(i+6)]*ker[2*dim+6];
-            total += src[(j+3)*dim+(i+6)]*ker[3*dim+6];
-            total += src[(j+4)*dim+(i+6)]*ker[4*dim+6];
-            total += src[(j+5)*dim+(i+6)]*ker[5*dim+6];
-            total += src[(j+6)*dim+(i+6)]*ker[6*dim+6];
-            total += src[(j+7)*dim+(i+6)]*ker[7*dim+6];
-
-            total += src[(j+0)*dim+(i+7)]*ker[0*dim+7];
-            total += src[(j+1)*dim+(i+7)]*ker[1*dim+7];
-            total += src[(j+2)*dim+(i+7)]*ker[2*dim+7];
-            total += src[(j+3)*dim+(i+7)]*ker[3*dim+7];
-            total += src[(j+4)*dim+(i+7)]*ker[4*dim+7];
-            total += src[(j+5)*dim+(i+7)]*ker[5*dim+7];
-            total += src[(j+6)*dim+(i+7)]*ker[6*dim+7];
-            total += src[(j+7)*dim+(i+7)]*ker[7*dim+7];
-
-            dst[j0+i] = total;
-
+	    dst[j0+i] = total;
 
         }
     }
 
 }
+
 
 
 /*********************************************************************
