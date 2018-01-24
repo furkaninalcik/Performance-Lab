@@ -70,16 +70,103 @@ void convolution(int dim,int *src, int *ker,int *dst)
 
             //// dst[j*dim+i] = dst[j*dim+i] +src[(j+l)*dim+(i+k)]*ker[l*dim+k]; //////
 
+            //total += src[j*dim+ 0*dim +(i+0)]*ker[0*dim+0];
 
-            total += src[(j+0)*dim+(i+0)]*ker[0*dim+0];
-            total += src[(j+1)*dim+(i+0)]*ker[1*dim+0];
-            total += src[(j+2)*dim+(i+0)]*ker[2*dim+0];
-            total += src[(j+3)*dim+(i+0)]*ker[3*dim+0];
-            total += src[(j+4)*dim+(i+0)]*ker[4*dim+0];
-            total += src[(j+5)*dim+(i+0)]*ker[5*dim+0];
-            total += src[(j+6)*dim+(i+0)]*ker[6*dim+0];
-            total += src[(j+7)*dim+(i+0)]*ker[7*dim+0];
 
+
+            int x0 = j*dim; // j0
+            int x1 = j0+dim;
+            int x2 = j0+2*dim;
+            int x3 = j0+3*dim;
+            int x4 = j0+4*dim; //(j+4)*dim
+            int x5 = j0+5*dim;
+            int x6 = j0+6*dim;
+            int x7 = j0+7*dim;
+
+            int y0 = 0;
+            int y1 = dim;
+            int y2 = 2*dim;
+            int y3 = 3*dim;
+            int y4 = 4*dim;
+            int y5 = 5*dim;
+            int y6 = 6*dim;
+            int y7 = 7*dim;
+
+
+
+            
+            total += src[x0+i]*ker[y0];
+            total += src[x1+i]*ker[y1];
+            total += src[x2+i]*ker[y2];
+            total += src[x3+i]*ker[y3];
+            total += src[x4+i]*ker[y4];
+            total += src[x5+i]*ker[y5];
+            total += src[x6+i]*ker[y6];
+            total += src[x7+i]*ker[y7];
+
+            total += src[x0+i+1]*ker[y0+1];
+            total += src[x1+i+1]*ker[y1+1];
+            total += src[x2+i+1]*ker[y2+1];
+            total += src[x3+i+1]*ker[y3+1];
+            total += src[x4+i+1]*ker[y4+1];
+            total += src[x5+i+1]*ker[y5+1];
+            total += src[x6+i+1]*ker[y6+1];
+            total += src[x7+i+1]*ker[y7+1];
+
+            total += src[x0+i+2]*ker[y0+2];
+            total += src[x1+i+2]*ker[y1+2];
+            total += src[x2+i+2]*ker[y2+2];
+            total += src[x3+i+2]*ker[y3+2];
+            total += src[x4+i+2]*ker[y4+2];
+            total += src[x5+i+2]*ker[y5+2];
+            total += src[x6+i+2]*ker[y6+2];
+            total += src[x7+i+2]*ker[y7+2];
+
+            total += src[x0+i+3]*ker[y0+3];
+            total += src[x1+i+3]*ker[y1+3];
+            total += src[x2+i+3]*ker[y2+3];
+            total += src[x3+i+3]*ker[y3+3];
+            total += src[x4+i+3]*ker[y4+3];
+            total += src[x5+i+3]*ker[y5+3];
+            total += src[x6+i+3]*ker[y6+3];
+            total += src[x7+i+3]*ker[y7+3];
+
+            total += src[x0+i+4]*ker[y0+4];
+            total += src[x1+i+4]*ker[y1+4];
+            total += src[x2+i+4]*ker[y2+4];
+            total += src[x3+i+4]*ker[y3+4];
+            total += src[x4+i+4]*ker[y4+4];
+            total += src[x5+i+4]*ker[y5+4];
+            total += src[x6+i+4]*ker[y6+4];
+            total += src[x7+i+4]*ker[y7+4];
+
+            total += src[x0+i+5]*ker[y0+5];
+            total += src[x1+i+5]*ker[y1+5];
+            total += src[x2+i+5]*ker[y2+5];
+            total += src[x3+i+5]*ker[y3+5];
+            total += src[x4+i+5]*ker[y4+5];
+            total += src[x5+i+5]*ker[y5+5];
+            total += src[x6+i+5]*ker[y6+5];
+            total += src[x7+i+5]*ker[y7+5];
+
+            total += src[x0+i+6]*ker[y0+6];
+            total += src[x1+i+6]*ker[y1+6];
+            total += src[x2+i+6]*ker[y2+6];
+            total += src[x3+i+6]*ker[y3+6];
+            total += src[x4+i+6]*ker[y4+6];
+            total += src[x5+i+6]*ker[y5+6];
+            total += src[x6+i+6]*ker[y6+6];
+            total += src[x7+i+6]*ker[y7+6];
+
+            total += src[x0+i+7]*ker[y0+7];
+            total += src[x1+i+7]*ker[y1+7];
+            total += src[x2+i+7]*ker[y2+7];
+            total += src[x3+i+7]*ker[y3+7];
+            total += src[x4+i+7]*ker[y4+7];
+            total += src[x5+i+7]*ker[y5+7];
+            total += src[x6+i+7]*ker[y6+7];
+            total += src[x7+i+7]*ker[y7+7];
+/*
             total += src[(j+0)*dim+(i+1)]*ker[0*dim+1];
             total += src[(j+1)*dim+(i+1)]*ker[1*dim+1];
             total += src[(j+2)*dim+(i+1)]*ker[2*dim+1];
@@ -142,7 +229,7 @@ void convolution(int dim,int *src, int *ker,int *dst)
             total += src[(j+5)*dim+(i+7)]*ker[5*dim+7];
             total += src[(j+6)*dim+(i+7)]*ker[6*dim+7];
             total += src[(j+7)*dim+(i+7)]*ker[7*dim+7];
-
+*/
             dst[j0+i] = total;
 
 
@@ -256,38 +343,41 @@ void matrix_multiplication(int dim,int *src, int *src2,int *dst)
             for (k = 0; k < dim; k += 32)
             {
 
-                total += src[i0+k]*src2[k+j0];
-                total += src[i0+(k+1)]*src2[(k+1)+j0];
-                total += src[i0+(k+2)]*src2[(k+2)+j0];
-                total += src[i0+(k+3)]*src2[(k+3)+j0];
-                total += src[i0+(k+4)]*src2[(k+4)+j0];
-                total += src[i0+(k+5)]*src2[(k+5)+j0];
-                total += src[i0+(k+6)]*src2[(k+6)+j0];
-                total += src[i0+(k+7)]*src2[(k+7)+j0];
-                total += src[i0+(k+8)]*src2[(k+8)+j0];
-                total += src[i0+(k+9)]*src2[(k+9)+j0];
-                total += src[i0+(k+10)]*src2[(k+10)+j0];
-                total += src[i0+(k+11)]*src2[(k+11)+j0];
-                total += src[i0+(k+12)]*src2[(k+12)+j0];
-                total += src[i0+(k+13)]*src2[(k+13)+j0];
-                total += src[i0+(k+14)]*src2[(k+14)+j0];
-                total += src[i0+(k+15)]*src2[(k+15)+j0];
-                total += src[i0+(k+16)]*src2[(k+16)+j0];
-                total += src[i0+(k+17)]*src2[(k+17)+j0];
-                total += src[i0+(k+18)]*src2[(k+18)+j0];
-                total += src[i0+(k+19)]*src2[(k+19)+j0];
-                total += src[i0+(k+20)]*src2[(k+20)+j0];
-                total += src[i0+(k+21)]*src2[(k+21)+j0];
-                total += src[i0+(k+22)]*src2[(k+22)+j0];
-                total += src[i0+(k+23)]*src2[(k+23)+j0];
-                total += src[i0+(k+24)]*src2[(k+24)+j0];
-                total += src[i0+(k+25)]*src2[(k+25)+j0];
-                total += src[i0+(k+26)]*src2[(k+26)+j0];
-                total += src[i0+(k+27)]*src2[(k+27)+j0];
-                total += src[i0+(k+28)]*src2[(k+28)+j0];
-                total += src[i0+(k+29)]*src2[(k+29)+j0];
-                total += src[i0+(k+30)]*src2[(k+30)+j0];
-                total += src[i0+(k+31)]*src2[(k+31)+j0];                
+                total += src[i0]*src2[j0];
+                total += src[i0+1]*src2[1+j0];
+                total += src[i0+2]*src2[2+j0];
+                total += src[i0+3]*src2[3+j0];
+                total += src[i0+4]*src2[4+j0];
+                total += src[i0+5]*src2[5+j0];
+                total += src[i0+6]*src2[6+j0];
+                total += src[i0+7]*src2[7+j0];
+                total += src[i0+8]*src2[8+j0];
+                total += src[i0+9]*src2[9+j0];
+                total += src[i0+10]*src2[10+j0];
+                total += src[i0+11]*src2[11+j0];
+                total += src[i0+12]*src2[12+j0];
+                total += src[i0+13]*src2[13+j0];
+                total += src[i0+14]*src2[14+j0];
+                total += src[i0+15]*src2[15+j0];
+                total += src[i0+16]*src2[16+j0];
+                total += src[i0+17]*src2[17+j0];
+                total += src[i0+18]*src2[18+j0];
+                total += src[i0+19]*src2[19+j0];
+                total += src[i0+20]*src2[20+j0];
+                total += src[i0+21]*src2[21+j0];
+                total += src[i0+22]*src2[22+j0];
+                total += src[i0+23]*src2[23+j0];
+                total += src[i0+24]*src2[24+j0];
+                total += src[i0+25]*src2[25+j0];
+                total += src[i0+26]*src2[26+j0];
+                total += src[i0+27]*src2[27+j0];
+                total += src[i0+28]*src2[28+j0];
+                total += src[i0+29]*src2[29+j0];
+                total += src[i0+30]*src2[30+j0];
+                total += src[i0+31]*src2[31+j0];  
+                
+                i0 += 32;              
+                j0 += 32;              
             }
 
 
